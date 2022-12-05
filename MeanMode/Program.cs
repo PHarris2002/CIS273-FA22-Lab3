@@ -38,8 +38,11 @@ namespace MeanMode
         {
             var numberCounts = new Dictionary<double, double>();
 
+            //placeholders for future usage
             double max_value = 0;
             double max_key = 0;
+
+            //initial value for new words added to dictionary
             double initial = 1;
 
             foreach (var number in array)
@@ -62,7 +65,7 @@ namespace MeanMode
                 numberCounts.Add(number, initial);
             }
 
-            return max_key; //return value
+            return max_key; //return mode
         }
     }
 }

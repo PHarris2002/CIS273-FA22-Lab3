@@ -34,18 +34,43 @@ namespace TextualAnalysis
 
             foreach (var word in words)
             {
-                hashSet.Add(word);
+                if (hashSet.Contains(word) == false)
+                {
+                    hashSet.Add(word);
+                }
             }
 
-            // foreach word do something
+            // if new, start with count of one
+            foreach (var word in words)
+            {
+                //increment the word count if it's already in the dictionary
+                if (wordCounts.ContainsKey(word))
+                {
+                    wordCounts[word] = wordCounts[word] + 1;
+                    continue;
+                }
 
+                //otherwise, add word if new with count of one
+                // if not ignoring stop words and word is a stop word
+                // skip the stop word, else add it
+                else
+                {
+                    if (stopWords.Contains(word) && ignoreStopWords == true)
+                    {
+                        if (wordCounts.ContainsKey(word) == false)
+                        {
+                            wordCounts.Add(word, 0);
+                        }
 
-            // if not ignoring stop words and word is a stop word
-            // skip the stop word
-            // else
-            // either add word if new with count of one
-            // or increment the word count if it's already in the dictionary
+                        else
+                        {
+                            continue;
+                        }
+                    }
 
+                        wordCounts.Add(word, 1);
+                }
+            }
 
             return wordCounts;
         }
@@ -56,10 +81,11 @@ namespace TextualAnalysis
             string text = System.IO.File.ReadAllText(path);
 
             // call the previous method
+            var result = ComputeWordFrequencies(text);
 
             // return the result of the other method
 
-            return null;
+            return result;
         }
 
         private static string[] GetStopWordsFromFile(string path)
