@@ -55,20 +55,22 @@ namespace TextualAnalysis
                 // skip the stop word, else add it
                 else
                 {
-                    if (stopWords.Contains(word) && ignoreStopWords == true)
+                    if (stopWords.Contains(word) && ignoreStopWords == true && hashSet.Contains(word) == false)
                     {
-                        if (wordCounts.ContainsKey(word) == false)
-                        {
-                            wordCounts.Add(word, 0);
-                        }
 
-                        else
-                        {
-                            continue;
-                        }
+                            wordCounts.Add(word, 0);
                     }
 
-                    wordCounts.Add(word, 1);
+                    else if (stopWords.Contains(word) && ignoreStopWords == true && hashSet.Contains(word) == true)
+                    {
+                        continue;
+                    }
+
+                    else
+
+                    {
+                        wordCounts.Add(word, 1);
+                    }
                 }
             }
 
@@ -84,7 +86,6 @@ namespace TextualAnalysis
             var result = ComputeWordFrequencies(text);
 
             // return the result of the other method
-
             return result;
         }
 
