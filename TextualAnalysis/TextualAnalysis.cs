@@ -7,7 +7,7 @@ namespace TextualAnalysis
 {
     public class TextualAnalysis
     {
-        public static string stopWordFilePath = "../../../Data/test.txt";
+        public static string stopWordFilePath = "../../../Data/stop-words.txt";
 
         public TextualAnalysis()
         {
@@ -68,7 +68,7 @@ namespace TextualAnalysis
                         }
                     }
 
-                        wordCounts.Add(word, 1);
+                        
                 }
             }
 
