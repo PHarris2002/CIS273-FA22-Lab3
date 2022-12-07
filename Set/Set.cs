@@ -99,9 +99,8 @@ namespace Set
 
             foreach (var e in set1)
             {
-                foreach (var f in set2)
+                if (set2.Contains(e))
                 {
-                    if (e.Equals(f))
                     {
                         set3.Add(e);
                     }

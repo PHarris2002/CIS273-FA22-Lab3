@@ -20,12 +20,12 @@ namespace TextualAnalysis
             // s = "all the faith he had had had had no effect."
 
             // remove punctuation
-            var cleanString = Regex.Replace(s,@"[^\w\s]", "");
+            var cleanString = Regex.Replace(s, @"[^\w\s]", "");
 
             // split the string into words(filtering out the empty strings)
             var words = cleanString.ToLower()
                                     .Split()
-                                    .Where(s => s!="");
+                                    .Where(s => s != "");
 
             string[] stopWords = GetStopWordsFromFile(stopWordFilePath);
 
@@ -68,7 +68,7 @@ namespace TextualAnalysis
                         }
                     }
 
-                        
+                    wordCounts.Add(word, 1);
                 }
             }
 
